@@ -56,4 +56,11 @@ public class ProjectService {
         }
         return null;
     }
+
+    public Project addProject(Project project) {
+        long id = listProjects.size() + 1;
+        project.setId(id);
+        listProjects.add(project);
+        return project;
+    }
 }
