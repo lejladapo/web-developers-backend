@@ -41,6 +41,10 @@ public class ProjectService {
         throw new RuntimeException("Id invalid.");
     }
 
+    public List<Project> getProjects() {
+        return listProjects;
+    }
+
     public Project deleteProject(long id) {
         Iterator<Project> iterator = listProjects.iterator();
         while(iterator.hasNext()) {
