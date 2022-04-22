@@ -35,4 +35,9 @@ public class ProjectController {
         }
         return "Project was deleted.";
     }
+
+    @PostMapping
+    public Project addProject(@RequestBody Project project) {
+        return projectService.addProject(project);
+    }
 }
