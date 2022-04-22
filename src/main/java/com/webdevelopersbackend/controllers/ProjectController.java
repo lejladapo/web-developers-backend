@@ -37,7 +37,12 @@ public class ProjectController {
     }
 
     @PostMapping
-    public Project addProject(@RequestBody Project project) {
-        return projectService.addProject(project);
+    public Project addProject(@RequestBody Project project) { return projectService.addProject(project);
     }
+    @PutMapping("/update")
+    public Project updateProject(@RequestBody Project project){
+        return projectService.updateProject(project);
+    }
+
+
 }
