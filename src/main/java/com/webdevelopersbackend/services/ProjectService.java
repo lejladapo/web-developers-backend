@@ -39,4 +39,8 @@ public class ProjectService {
         }
         throw new RuntimeException("Id invalid.");
     }
+
+    public List<Project> getProjects() {
+        return listProjects;
+    }
 }
