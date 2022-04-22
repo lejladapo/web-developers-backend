@@ -21,6 +21,7 @@ public class DevProfileService {
         developer.setId(1);
         developer.setName("Ismar");
         developer.setSurname("Becirspahic");
+        developer.setPassword("12345678");
         developer.setLocation("Germany");
         developer.setNumberOfProjectsCompleted(3);
         developer.setRecentCompletedProject("Something");
@@ -47,5 +48,18 @@ public class DevProfileService {
             }
         }
         return null;
+    }
+    public DevProfile updateDevProfile(DevProfile devProfile, long id){
+        for (DevProfile currentDevProfile: listDevProfile){
+            if (currentDevProfile.getId() == id){
+                currentDevProfile.setName(devProfile.getName());
+                currentDevProfile.setSurname(devProfile.getSurname());
+                currentDevProfile.setLocation(devProfile.getLocation());
+                currentDevProfile.setNumberOfProjectsCompleted(devProfile.getNumberOfProjectsCompleted());
+                currentDevProfile.setRecentCompletedProject(devProfile.getRecentCompletedProject());
+                currentDevProfile.setPassword(devProfile.getPassword());
+            }
+        }
+        return devProfile;
     }
 }
