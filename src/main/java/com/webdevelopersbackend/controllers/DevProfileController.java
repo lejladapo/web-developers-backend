@@ -1,6 +1,7 @@
 package com.webdevelopersbackend.controllers;
 
 import com.webdevelopersbackend.models.DevProfile;
+import com.webdevelopersbackend.models.Project;
 import com.webdevelopersbackend.services.DevProfileService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +27,9 @@ public class DevProfileController {
             throw new RuntimeException("Profile does not exist");
         }
         return "Profile was deleted.";
+    }
+    @PutMapping("/update/{id}")
+    public DevProfile updateDevProfile(@RequestBody DevProfile devProfile,@PathVariable long id){
+        return devProfileService.updateDevProfile(devProfile,id);
     }
 }
