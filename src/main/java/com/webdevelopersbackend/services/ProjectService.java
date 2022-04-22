@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -42,5 +43,17 @@ public class ProjectService {
 
     public List<Project> getProjects() {
         return listProjects;
+    }
+
+    public Project deleteProject(long id) {
+        Iterator<Project> iterator = listProjects.iterator();
+        while(iterator.hasNext()) {
+            Project project = iterator.next();
+            if(project.getId() == id) {
+                iterator.remove();
+                return project;
+            }
+        }
+        return null;
     }
 }
