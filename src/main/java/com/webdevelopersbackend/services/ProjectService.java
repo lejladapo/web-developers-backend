@@ -63,4 +63,18 @@ public class ProjectService {
         listProjects.add(project);
         return project;
     }
+    public Project updateProject(Project project){
+        for (Project currentProject: listProjects){
+            if (currentProject.getId() == project.getId()){
+                currentProject.setId(project.getId());
+                currentProject.setName(project.getName());
+                currentProject.setPrice(project.getPrice());
+                currentProject.setLocation(project.getLocation());
+                currentProject.setDescription(project.getDescription());
+                currentProject.setEndDate(project.getEndDate());
+                currentProject.setEndDate(project.getEndDate());
+            }
+        }
+        return project;
+    }
 }
