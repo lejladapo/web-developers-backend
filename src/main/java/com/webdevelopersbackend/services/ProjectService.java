@@ -2,20 +2,21 @@ package com.webdevelopersbackend.services;
 
 
 import com.webdevelopersbackend.models.Project;
+import com.webdevelopersbackend.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProjectService {
 
-    private List<Project> listProjects = new ArrayList<Project>();
+    private List<Project> listProjects = new ArrayList<>();
 
-    public ProjectService() {
+    private final ProjectRepository projectRepository;
+
+    public ProjectService(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
         listProjects.add(testProject());
     }
 
@@ -33,35 +34,29 @@ public class ProjectService {
     }
 
     public Project getOneProject(long id) {
-        for(Project project:listProjects) {
-            if(project.getId() == id) {
-                return project;
-            }
+        Optional<Project> projectOptional = projectRepository.findById(id);
+        if(projectOptional.isPresent()) {
+            return projectOptional.get();
         }
         throw new RuntimeException("Id invalid.");
     }
 
     public List<Project> getProjects() {
-        return listProjects;
+        return projectRepository.findAll();
     }
 
     public Project deleteProject(long id) {
-        Iterator<Project> iterator = listProjects.iterator();
-        while(iterator.hasNext()) {
-            Project project = iterator.next();
-            if(project.getId() == id) {
-                iterator.remove();
-                return project;
-            }
+        Optional<Project> projectOptional = projectRepository.findById(id);
+        if(projectOptional.isPresent()) {
+            projectRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Id doesn't exist.");
         }
         return null;
     }
 
     public Project addProject(Project project) {
-        long id = listProjects.size() + 1;
-        project.setId(id);
-        listProjects.add(project);
-        return project;
+        return projectRepository.save(project);
     }
     public Project updateProject(Project project){
         for (Project currentProject: listProjects){
