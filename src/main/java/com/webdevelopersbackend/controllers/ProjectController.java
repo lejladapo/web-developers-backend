@@ -29,10 +29,7 @@ public class ProjectController {
 
     @DeleteMapping("/delete/{id}")
     public String deleteProject(@PathVariable long id) {
-        Project project = projectService.deleteProject(id);
-        if(project == null) {
-            throw new RuntimeException("Id does not exist");
-        }
+        projectService.deleteProject(id);
         return "Project was deleted.";
     }
 
