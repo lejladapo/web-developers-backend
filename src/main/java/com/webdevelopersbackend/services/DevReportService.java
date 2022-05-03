@@ -19,7 +19,6 @@ public class DevReportService {
         devReport.setId(1);
         devReport.setName("Ismar");
         devReport.setSurname("Becirspahic");
-        devReport.setPassword("12345678");
         devReport.setLocation("Germany");
         devReport.setNumberOfProjectsCompleted(3);
         devReport.setRecentCompletedProject("Something");

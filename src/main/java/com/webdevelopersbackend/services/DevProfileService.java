@@ -1,18 +1,21 @@
 package com.webdevelopersbackend.services;
 
 import com.webdevelopersbackend.models.DevProfile;
+import com.webdevelopersbackend.repositories.DevProfileRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DevProfileService {
 
     private List<DevProfile> listDevProfile = new ArrayList<>();
+    private final DevProfileRepository devProfileRepository;
 
-    public DevProfileService() {
+    public DevProfileService(DevProfileRepository devProfileRepository) {
+        this.devProfileRepository = devProfileRepository;
         listDevProfile.add(testProfile());
     }
 
@@ -21,7 +24,6 @@ public class DevProfileService {
         developer.setId(1);
         developer.setName("Ismar");
         developer.setSurname("Becirspahic");
-        developer.setPassword("12345678");
         developer.setLocation("Germany");
         developer.setNumberOfProjectsCompleted(3);
         developer.setRecentCompletedProject("Something");
@@ -30,24 +32,27 @@ public class DevProfileService {
     }
 
     public DevProfile getProfile(long id) {
-        for(DevProfile developer:listDevProfile) {
-            if(developer.getId() == id) {
-                return developer;
-            }
+        Optional<DevProfile> devProfileOptional = devProfileRepository.findById(id);
+        if(devProfileOptional.isPresent()) {
+            return devProfileOptional.get();
         }
-        throw new RuntimeException("Developer does not exist");
+        throw new RuntimeException("Id invalid.");
+    }
+    public List<DevProfile> getListDevProfile() {
+        return devProfileRepository.findAll();
     }
 
     public DevProfile deleteProfile(long id) {
-        Iterator<DevProfile> iterator = listDevProfile.iterator();
-        while(iterator.hasNext()) {
-            DevProfile developer = iterator.next();
-            if(developer.getId() == id) {
-                iterator.remove();
-                return developer;
-            }
+        Optional<DevProfile> devProfileOptional = devProfileRepository.findById(id);
+        if(devProfileOptional.isPresent()) {
+            devProfileRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Id doesn't exist.");
         }
         return null;
+    }
+    public DevProfile addProfile(DevProfile devProfile) {
+        return devProfileRepository.save(devProfile);
     }
     public DevProfile updateDevProfile(DevProfile devProfile, long id){
         for (DevProfile currentDevProfile: listDevProfile){
@@ -57,7 +62,7 @@ public class DevProfileService {
                 currentDevProfile.setLocation(devProfile.getLocation());
                 currentDevProfile.setNumberOfProjectsCompleted(devProfile.getNumberOfProjectsCompleted());
                 currentDevProfile.setRecentCompletedProject(devProfile.getRecentCompletedProject());
-                currentDevProfile.setPassword(devProfile.getPassword());
+
             }
         }
         return devProfile;
