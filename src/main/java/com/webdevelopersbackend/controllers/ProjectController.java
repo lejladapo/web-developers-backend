@@ -27,7 +27,7 @@ public class ProjectController {
         return this.projectService.getOneProject(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deleteProject(@PathVariable long id) {
         projectService.deleteProject(id);
         return "Project was deleted.";
