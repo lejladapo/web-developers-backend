@@ -1,12 +1,12 @@
 
 server:
-  port: 8080
+  port: ${APP_PORT}
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/web_developers_db
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://localhost:${APP_DB_PORT}/web_developers_db
+    username: ${APP_USERNAME}
+    password: ${APP_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,3 +16,6 @@ spring:
   data:
     jpa:
       repositories.enabled: true
+service:
+  ui:
+    url: ${APP_FRONTEND_PORT}
