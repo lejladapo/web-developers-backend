@@ -18,4 +18,4 @@ spring:
       repositories.enabled: true
 service:
   ui:
-    url: ${APP_FRONTEND_PORT:"http://localhost:4200"}
+    url: ${FRONTEND_API_URL:"http://localhost:4200"}
