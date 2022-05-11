@@ -30,7 +30,7 @@ public class DevProfileController {
         devProfileService.deleteProfile(id);
         return "Profile was deleted.";
     }
-    @PostMapping
+    @PostMapping("/create")
     public DevProfile addProfile(@RequestBody DevProfile profile) { return devProfileService.addProfile(profile);
     }
     @PutMapping("/update/{id}")
