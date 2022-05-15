@@ -1,6 +1,7 @@
 package com.webdevelopersbackend.controllers;
 import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.services.DevProfileService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,15 +27,14 @@ public class DevProfileController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProfile(@PathVariable long id) {
+    public void deleteProfile(@PathVariable long id) {
         devProfileService.deleteProfile(id);
-        return "Profile was deleted.";
     }
     @PostMapping("/create")
     public DevProfile addProfile(@RequestBody DevProfile profile) { return devProfileService.addProfile(profile);
     }
     @PutMapping("/update/{id}")
-    public DevProfile updateDevProfile(@RequestBody DevProfile devProfile,@PathVariable long id){
-        return devProfileService.updateDevProfile(devProfile,id);
+    public DevProfile updateProfile(@RequestBody DevProfile profile,@PathVariable long id){
+        return devProfileService.updateProfile(profile,id);
     }
 }

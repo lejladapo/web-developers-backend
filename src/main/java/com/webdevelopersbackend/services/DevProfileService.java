@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class DevProfileService {
 
-    private List<DevProfile> listDevProfile = new ArrayList<>();
+    private final List<DevProfile> listDevProfile = new ArrayList<>();
     private final DevProfileRepository devProfileRepository;
 
     public DevProfileService(DevProfileRepository devProfileRepository) {
@@ -42,29 +42,24 @@ public class DevProfileService {
         return devProfileRepository.findAll();
     }
 
-    public DevProfile deleteProfile(long id) {
-        Optional<DevProfile> devProfileOptional = devProfileRepository.findById(id);
-        if(devProfileOptional.isPresent()) {
-            devProfileRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Id doesn't exist.");
-        }
-        return null;
+    public void deleteProfile(long id) {
+        devProfileRepository.deleteById(id);
     }
     public DevProfile addProfile(DevProfile devProfile) {
         return devProfileRepository.save(devProfile);
     }
-    public DevProfile updateDevProfile(DevProfile devProfile, long id){
+    public DevProfile updateProfile(DevProfile devProfile, long id){
         for (DevProfile currentDevProfile: listDevProfile){
             if (currentDevProfile.getId() == id){
                 currentDevProfile.setName(devProfile.getName());
                 currentDevProfile.setSurname(devProfile.getSurname());
                 currentDevProfile.setLocation(devProfile.getLocation());
+                currentDevProfile.setYearsOfExperience(devProfile.getYearsOfExperience());
                 currentDevProfile.setNumberOfProjectsCompleted(devProfile.getNumberOfProjectsCompleted());
                 currentDevProfile.setRecentCompletedProject(devProfile.getRecentCompletedProject());
 
             }
         }
-        return devProfile;
+        return devProfileRepository.save(devProfile);
     }
 }
