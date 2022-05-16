@@ -1,6 +1,7 @@
 package com.webdevelopersbackend.services;
 
 
+import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.models.Project;
 import com.webdevelopersbackend.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
@@ -45,31 +46,24 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Project deleteProject(long id) {
-        Optional<Project> projectOptional = projectRepository.findById(id);
-        if(projectOptional.isPresent()) {
-            projectRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Id doesn't exist.");
-        }
-        return null;
+    public void deleteProject(long id) {
+        projectRepository.deleteById(id);
     }
 
     public Project addProject(Project project) {
         return projectRepository.save(project);
     }
-    public Project updateProject(Project project){
+    public Project updateProject(Project project, long id){
         for (Project currentProject: listProjects){
-            if (currentProject.getId() == project.getId()){
-                currentProject.setId(project.getId());
+            if (currentProject.getId() == id){
                 currentProject.setName(project.getName());
-                currentProject.setPrice(project.getPrice());
-                currentProject.setLocation(project.getLocation());
                 currentProject.setDescription(project.getDescription());
+                currentProject.setLocation(project.getLocation());
+                currentProject.setStartDate(project.getStartDate());
                 currentProject.setEndDate(project.getEndDate());
-                currentProject.setEndDate(project.getEndDate());
+                currentProject.setPrice(project.getPrice());
             }
         }
-        return project;
+        return projectRepository.save(project);
     }
 }
