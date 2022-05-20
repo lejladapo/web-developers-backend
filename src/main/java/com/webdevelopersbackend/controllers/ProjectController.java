@@ -28,17 +28,16 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProject(@PathVariable long id) {
+    public void deleteProject(@PathVariable long id) {
         projectService.deleteProject(id);
-        return "Project was deleted.";
     }
 
     @PostMapping
     public Project addProject(@RequestBody Project project) { return projectService.addProject(project);
     }
     @PutMapping("/update")
-    public Project updateProject(@RequestBody Project project){
-        return projectService.updateProject(project);
+    public Project updateProject(@RequestBody Project project, @PathVariable long id){
+        return projectService.updateProject(project, id);
     }
 
 
