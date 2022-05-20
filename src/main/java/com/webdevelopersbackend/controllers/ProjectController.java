@@ -32,10 +32,10 @@ public class ProjectController {
         projectService.deleteProject(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Project addProject(@RequestBody Project project) { return projectService.addProject(project);
     }
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public Project updateProject(@RequestBody Project project, @PathVariable long id){
         return projectService.updateProject(project, id);
     }
