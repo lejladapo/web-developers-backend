@@ -1,6 +1,5 @@
 package com.webdevelopersbackend.controllers;
 
-import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.models.Project;
 import com.webdevelopersbackend.services.ProjectService;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +39,6 @@ public class ProjectController {
     public Project updateProject(@RequestBody Project project, @PathVariable long id){
         return projectService.updateProject(project, id);
     }
+
 
 }
