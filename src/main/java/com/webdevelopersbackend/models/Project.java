@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "project")
@@ -18,6 +17,9 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @ManyToOne
+    @JoinColumn(name = "appUser", referencedColumnName = "id")
+    private AppUser appUser;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
@@ -30,5 +32,7 @@ public class Project {
     private String endDate;
     @Column(name = "price")
     private int price;
+    @Column(name = "unavailable", nullable = false)
+    private boolean unavailable;
 }
 
