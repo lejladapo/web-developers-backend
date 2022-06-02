@@ -18,18 +18,10 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appUser")
-    private List<Project> project;
     @Column(name = "email")
     private String email;
+    @Column(name = "username")
+    private String username;
     @Column(name = "password")
     private String password;
-    @Column(name = "typeOfUser")
-    private String typeOfUser;
-    @Column(name = "location")
-    private String location;
-    @Column(name = "numberOfProjectsCompleted")
-    private int numberOfProjectsCompleted;
-    @Column(name = "yearsOfExperience")
-    private int yearsOfExperience;
 }
