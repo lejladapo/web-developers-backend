@@ -1,7 +1,7 @@
 package com.webdevelopersbackend.controllers;
 
-import com.webdevelopersbackend.models.AppUser;
 import com.webdevelopersbackend.models.entities.UserEntity;
+
 import com.webdevelopersbackend.services.SignupService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +19,12 @@ public class SignupController {
         this.signupService = signupService;
     }
     @PostMapping
+
     public UserEntity createUser(@RequestBody UserEntity appUser) { return signupService.createUser(appUser);
     }
     @GetMapping
     public List<UserEntity> getUsers() {
+
         return this.signupService.getListDevProfile();
     }
 

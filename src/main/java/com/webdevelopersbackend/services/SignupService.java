@@ -1,7 +1,9 @@
 package com.webdevelopersbackend.services;
 
 import com.webdevelopersbackend.models.AppUser;
+
 import com.webdevelopersbackend.models.entities.UserEntity;
+
 import com.webdevelopersbackend.repositories.SignupRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ public class SignupService{
     public SignupService(SignupRepository signupRepository) {
         this.signupRepository = signupRepository;
     }
+
     public UserEntity createUser(UserEntity appUser) {
         return signupRepository.save(appUser);
     }
