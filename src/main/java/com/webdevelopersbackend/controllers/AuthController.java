@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final HeroUserDetailsService userDetailsService;
     private final JwtUtil jwtTokenUtil;
 
     @PostMapping("/authenticate")

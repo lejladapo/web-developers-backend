@@ -38,6 +38,7 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
+
     private Project getEntity(long id) {
         Optional<Project> projectOptional = projectRepository.findById(id);
         if(projectOptional.isPresent()) {
