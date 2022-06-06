@@ -2,7 +2,7 @@ package com.webdevelopersbackend.controllers;
 
 import com.webdevelopersbackend.models.dtos.AuthenticationRequestPayload;
 import com.webdevelopersbackend.models.dtos.AuthenticationResponsePayload;
-import com.webdevelopersbackend.services.HeroUserDetailsService;
+import com.webdevelopersbackend.services.AppUserDetailsService;
 import com.webdevelopersbackend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final HeroUserDetailsService userDetailsService;
     private final JwtUtil jwtTokenUtil;
 
     @PostMapping("/authenticate")

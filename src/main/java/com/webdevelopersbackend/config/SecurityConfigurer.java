@@ -1,6 +1,6 @@
 package com.webdevelopersbackend.config;
 import com.webdevelopersbackend.filter.JwtRequestFilter;
-import com.webdevelopersbackend.services.HeroUserDetailsService;
+import com.webdevelopersbackend.services.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +19,7 @@ import java.security.SecureRandom;
 @RequiredArgsConstructor
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    private final HeroUserDetailsService invitationsUserDetailsService;
+    private final AppUserDetailsService invitationsUserDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 

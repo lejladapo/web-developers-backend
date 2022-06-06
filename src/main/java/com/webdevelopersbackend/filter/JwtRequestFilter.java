@@ -1,7 +1,7 @@
 package com.webdevelopersbackend.filter;
 
 import com.webdevelopersbackend.models.SimpleUser;
-import com.webdevelopersbackend.services.HeroUserDetailsService;
+import com.webdevelopersbackend.services.AppUserDetailsService;
 import com.webdevelopersbackend.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +24,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private static final String BEARER_STRING = "Bearer ";
     private static final int BEARER_STRING_LENGTH = 7;
     private final JwtUtil jwtUtil;
-    private final HeroUserDetailsService userDetailsService;
+    private final AppUserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
