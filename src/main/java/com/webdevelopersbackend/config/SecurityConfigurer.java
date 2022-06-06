@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.security.SecureRandom;
+
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -53,7 +55,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(12, new SecureRandom());
     }
 
 }
