@@ -7,6 +7,4 @@ import lombok.Setter;
 public class DevReport extends DevProfile{
     private long id;
     private int noOfTimesDevAppliedForPosition;
-    private int noOfTimesDevGotThePosition;
-    private int earnings;
 }
