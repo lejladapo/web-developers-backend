@@ -1,7 +1,6 @@
 package com.webdevelopersbackend.controllers;
 import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.services.DevProfileService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

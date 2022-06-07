@@ -1,5 +1,6 @@
 package com.webdevelopersbackend.services;
 
+import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.models.SimpleUser;
 import com.webdevelopersbackend.models.entities.UserEntity;
 import com.webdevelopersbackend.repositories.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
@@ -34,5 +36,17 @@ public class AppUserDetailsService implements UserDetailsService {
 
     private UserEntity getFullUserByUsername(String userName) {
         return userRepository.findFirstByUsername(userName);
+    }
+    public UserEntity getUserProfile(long id) {
+        Optional<UserEntity> devProfileOptional = userRepository.findById(id);
+        if(devProfileOptional.isPresent()) {
+            return devProfileOptional.get();
+        }
+        throw new RuntimeException("Id invalid.");
+    }
+    public UserEntity updateProfile(UserEntity user, long id){
+        getUserProfile(id);
+        user.setId(id);
+        return userRepository.save(user);
     }
 }
