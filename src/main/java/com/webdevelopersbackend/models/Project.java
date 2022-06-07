@@ -35,4 +35,3 @@ public class Project {
     @Column(name = "unavailable", nullable = false)
     private boolean unavailable;
 }
-
