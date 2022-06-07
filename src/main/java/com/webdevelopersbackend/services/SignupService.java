@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SignupService{
+public class SignupService {
     private final SignupRepository signupRepository;
     private final PasswordEncoder passwordEncoder;
 

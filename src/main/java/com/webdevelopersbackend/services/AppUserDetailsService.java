@@ -29,7 +29,7 @@ public class AppUserDetailsService implements UserDetailsService {
     }
 
     public SimpleUser getUserByUsername(String userName) {
-        getFullUserByUsername(userName); // user exists?
+        getFullUserByUsername(userName);
         return new SimpleUser(userName);
     }
 

@@ -19,8 +19,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appUser")
-    private List<Project> projects;
     @Column(name = "name")
     private String username;
     @Column(name = "fName")

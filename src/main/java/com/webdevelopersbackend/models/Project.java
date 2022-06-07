@@ -18,9 +18,6 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne
-    @JoinColumn(name = "application_user", referencedColumnName = "id")
-    private UserEntity appUser;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
