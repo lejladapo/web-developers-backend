@@ -1,5 +1,6 @@
 package com.webdevelopersbackend.models;
 
+import com.webdevelopersbackend.models.entities.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,8 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    @JoinColumn(name = "appUser", referencedColumnName = "id")
-    private AppUser appUser;
+    @JoinColumn(name = "application_user", referencedColumnName = "id")
+    private UserEntity appUser;
     @Column(name = "name")
     private String name;
     @Column(name = "description")

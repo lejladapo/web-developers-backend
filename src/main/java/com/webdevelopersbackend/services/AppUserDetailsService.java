@@ -1,6 +1,5 @@
 package com.webdevelopersbackend.services;
 
-import com.webdevelopersbackend.models.DevProfile;
 import com.webdevelopersbackend.models.SimpleUser;
 import com.webdevelopersbackend.models.entities.UserEntity;
 import com.webdevelopersbackend.repositories.UserRepository;
