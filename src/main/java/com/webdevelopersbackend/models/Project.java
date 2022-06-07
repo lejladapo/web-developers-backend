@@ -18,7 +18,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    @JoinColumn(name = "appUser", referencedColumnName = "username")
+    @JoinColumn(name = "appUser", referencedColumnName = "id")
     private AppUser appUser;
     @Column(name = "name")
     private String name;
