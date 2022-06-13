@@ -19,7 +19,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtTokenUtil;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponsePayload> createAuthenticationToken(
             @RequestBody AuthenticationRequestPayload payload
     ) {
